@@ -20,30 +20,35 @@ class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var redSlider: UISlider!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        changeColourView()
     }
 
     @IBAction func redSliderAction() {
-        
-        redAmountLabel.text = redSlider.value.formatted(.number.precision(.fractionLength(2)))
+        let red = redSlider.value / 255
+        redAmountLabel.text = red.formatted(.number.precision(.fractionLength(2)))
         changeColourView()
     }
     
     @IBAction func greenSliderAction() {
-        greenAmountLabel.text = (greenSlider.value.rounded()).formatted()
+        let green = greenSlider.value / 255
+        greenAmountLabel.text = green.formatted(.number.precision(.fractionLength(2)))
         changeColourView()
     }
     
     @IBAction func blueSlidrAction() {
-        blueAmountLabel.text = blueSlider.value.rounded().formatted()
+        let blue = blueSlider.value / 255
+        blueAmountLabel.text = blue.formatted(.number.precision(.fractionLength(2)))
         changeColourView()
     }
     
     private func changeColourView() {
-        let redColour = redSlider.value
-        MainView.backgroundColor = .init(red: CGFloat(redColour / 255), green: CGFloat(greenSlider.value / 255), blue: CGFloat(blueSlider.value / 255), alpha: 1)
+        MainView.backgroundColor = .init(red: CGFloat(redSlider.value / 255),
+                                         green: CGFloat(greenSlider.value / 255),
+                                         blue: CGFloat(blueSlider.value / 255),
+                                         alpha: 1)
     }
 }
 
