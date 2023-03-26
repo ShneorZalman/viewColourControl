@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MainView.layer.cornerRadius = 10
         changeColourView()
     }
 
